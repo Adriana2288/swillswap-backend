@@ -8,6 +8,7 @@ const router = require("express").Router()
 
 
 router.route("/api/profile").post((req, res) => {
+    console.log(req.body)
     const newUser = new User(req.body)
     newUser.save()
     .then(user => res.json(user))
