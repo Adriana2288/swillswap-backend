@@ -5,6 +5,7 @@ const cors = require("cors")
 require('dotenv').config()
 // Import routes
 const route = require("./controllers/auth")
+const routeprofile = require("./controllers/profile.js")
 
 
 
@@ -28,6 +29,9 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 // Route Middlewares
 app.use("/api/user", route)
+app.use("/api/profile", routeprofile)
 
 
-app.listen(3000, () => console.log("Server is running.."))
+
+app.listen(5000, () => console.log("Server is running.."))
+
