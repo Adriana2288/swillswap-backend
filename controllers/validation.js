@@ -15,5 +15,13 @@ const Joi = require("Joi")
         password: Joi.string().min(6).max(1000).required()
     })
 
+    const profileSchema = Joi.object({
+        country: Joi.string().required(),
+        bio: Joi. string().required(),
+        skills: Joi.array().min(1).required(),
+        interests: Joi.array().min(1).required()
+    })
+
 module.exports.schema = schema
 module.exports.loginSchema = loginSchema
+module.exports.profileSchema = profileSchema

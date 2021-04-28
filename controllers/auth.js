@@ -4,6 +4,7 @@ const { schema, loginSchema } = require("./validation")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
+
 // Sign up
 
 router.post("/signup", async (req, res) => {
@@ -24,7 +25,8 @@ router.post("/signup", async (req, res) => {
     // Hashing passwords
      const salt = await bcrypt.genSalt(10)
      const hashedPassword = await bcrypt.hash(req.body.password, salt)
-     const hashedSecondPass = await bcrypt.hash(req.body.repeat_password, salt)
+    //  const hashedSecondPass = await bcrypt.hash(req.body.repeat_password, salt)
+    // TODO - delete this crap
     
 
     // New user registration
@@ -75,6 +77,6 @@ router.post("/login", async (req, res) => {
    res.header("token-auth", token).status(200).send(token)
 })
 
-   
+
 
 module.exports = router
