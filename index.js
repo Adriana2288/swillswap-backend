@@ -24,7 +24,7 @@ connection.once("open", () => {
 
 app.use(cors())
 //Middleware 
-app.use(express.json())
+app.use(express.json({limit: "5mb"}))
 // Converting received data into json
 app.use(express.urlencoded({extended:true}))
 // Route Middlewares
@@ -33,5 +33,5 @@ app.use("/api/profile", routeprofile)
 
 
 
-app.listen(5000, () => console.log("Server is running.."))
+app.listen(3000, () => console.log("Server is running.."))
 
