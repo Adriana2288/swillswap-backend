@@ -22,23 +22,24 @@ router.use(fileUpload())
 
     // Saving profile picture
    
-    const fileName = nanoid()
-    try {
-      const file = req.body.profileImg
-      fs.writeFileSync("./uploads/" + fileName, file)
-    }
+  //   const fileName = nanoid()
+  //   try {
+  //     const file = req.body.profileImg
+  //     fs.writeFileSync("./uploads/" + fileName, file)
+  //   }
 
-   catch (error) {
-    console.log(error)
-    res.status(500).json({
-      message: error,
-    });
-  }
+  //  catch (error) {
+  //   console.log(error)
+  //   res.status(500).json({
+  //     message: error,
+  //   });
+  // }
 
     // Saving profiles' data
 
     const profile = new Profile({
-        profileImg: fileName,
+        // profileImg: fileName,
+        // userId: req.body.userId,
         country: req.body.country,
         bio: req.body.bio,
         skills: req.body.skills,
@@ -57,11 +58,22 @@ router.use(fileUpload())
 
   // Calling profile data
 
-  router.get("/userProfile", (req, res) => {
-    //Call data
-    response = req.query.userId
+  // router.get("/userProfile", async (req, res) => {
 
-  })
+  //   try {
+  //     const profileData = await Profile.find({userId: req.userId})
+  //     res.status(200).send(JSON.stringify(profileData))
+  //   }
+
+  //   catch(err) {
+  //     console.log(err)
+  //        res.status(400).send({err})
+  //    }
+    
+  // // const profileData = await Profile.find({userId: req.userId})
+  // // res.end(JSON.stringify(profileData));   
+
+  // })
 
 
 

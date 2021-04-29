@@ -19,7 +19,7 @@ router.post("/signup", async (req, res) => {
     // Confirm new user is not already registered 
     const emailDuplicate = await User.findOne({email: req.body.email})
     if (emailDuplicate) {
-        console.log("anything")
+        
         return res.status(400).send({err: "Email already exists"})
     }
 
