@@ -7,8 +7,7 @@ const userSchema = new Schema({
   username: { type: String, required: true, },
   age: { type: Number, min: 18 },
   email: { type: String, required: true, },
-  password: { type: String, required: true, max: 1000, min: 6 },
-  repeat_password: { type: String, required: true, max: 1000, min: 6 }
+  password: { type: String, required: true, max: 1000, min: 6 }
 });
 
 const User = mongoose.model("User", userSchema);

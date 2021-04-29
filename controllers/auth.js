@@ -10,23 +10,23 @@ const jwt = require("jsonwebtoken")
 router.post("/signup", async (req, res) => {
     
     // Data validation 
-    const { error } = schema.validate(req.body)
+    // const { error } = schema.validate(req.body)
     
-    if (error) {
-        return res.status(400).send(error.details[0].message)
-    } 
+    // if (error) {
+    //     return res.status(400).send(error.details[0].message)
+    // } 
 
     // Confirm new user is not already registered 
     const emailDuplicate = await User.findOne({email: req.body.email})
     if (emailDuplicate) {
-        return res.status(400).send("Email already exists")
+        console.log("anything")
+        return res.status(400).send({err: "Email already exists"})
     }
 
     // Hashing passwords
      const salt = await bcrypt.genSalt(10)
      const hashedPassword = await bcrypt.hash(req.body.password, salt)
-    //  const hashedSecondPass = await bcrypt.hash(req.body.repeat_password, salt)
-    // TODO - delete this crap
+   
     
 
     // New user registration
@@ -37,7 +37,6 @@ router.post("/signup", async (req, res) => {
       age: req.body.age,
       email: req.body.email,
       password: hashedPassword,
-      repeat_password: hashedSecondPass
    })
 
    try {
@@ -45,7 +44,8 @@ router.post("/signup", async (req, res) => {
       res.status(200).send({user: user._id})
    } 
    catch(err) {
-       res.status(400).send(err)
+    console.log(err)
+       res.status(400).send({err})
    }
 })
 
