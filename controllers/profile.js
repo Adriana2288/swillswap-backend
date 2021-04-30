@@ -60,49 +60,7 @@ router.use(fileUpload())
 
   router.get("/userProfile/:userId", async (req, res) => {
 
-
-    
-      // const id = req.params.userId
-
-      // const profileData = await Profile.find({_id: req.id})
-      // debugger
-      // res.status(200).send(profileData)
-    
-
-    
-  //  catch(err) {
-  //     console.log(err)
-  //        res.status(400).send({err})
-  //    }
-
-
-    
-      // const id = req.params.userId
-      // Profile.findOne({_id: id})
-      // .exec()
-      // .then(doc => {
-      //   res.render("user.hbs", {
-      //     country: doc.country,
-      //     bio: doc.bio, 
-      //     skills: doc.skills,
-      //     interests: doc.interests
-      //   })
-      // })
-      // .catch(error => {
-      //   res.status(400).send({err})
-      // })
-    
-
-//     try {
-//       let id = req.params.userId
-//       let userDetails = userModel.find({_id: id})
-//        res.status(200).send(profileData)
-//  }
-
-//    catch(err) {
-//       console.log(err)
-//          res.status(400).send({err})
-//      }
+  // Requesting user profile
 
     try {
       const profileData = await Profile.findOne({userId: req._id})
