@@ -58,22 +58,64 @@ router.use(fileUpload())
 
   // Calling profile data
 
-  // router.get("/userProfile", async (req, res) => {
+  router.get("/userProfile/:userId", async (req, res) => {
 
-  //   try {
-  //     const profileData = await Profile.find({userId: req.userId})
-  //     res.status(200).send(JSON.stringify(profileData))
-  //   }
 
-  //   catch(err) {
-  //     console.log(err)
-  //        res.status(400).send({err})
-  //    }
+    try {
+      const id = req.params.userId
+      const profileData = await Profile.find({_id: req.id})
+      res.status(200).send(profileData)
+    }
+
     
-  // // const profileData = await Profile.find({userId: req.userId})
-  // // res.end(JSON.stringify(profileData));   
+   catch(err) {
+      console.log(err)
+         res.status(400).send({err})
+     }
 
-  // })
+
+    
+      // const id = req.params.userId
+      // Profile.findOne({_id: id})
+      // .exec()
+      // .then(doc => {
+      //   res.render("user.hbs", {
+      //     country: doc.country,
+      //     bio: doc.bio, 
+      //     skills: doc.skills,
+      //     interests: doc.interests
+      //   })
+      // })
+      // .catch(error => {
+      //   res.status(400).send({err})
+      // })
+    
+
+//     try {
+//       let id = req.params.userId
+//       let userDetails = userModel.find({_id: id})
+//       await res.status(200).send(profileData)
+//  }
+
+//    catch(err) {
+//       console.log(err)
+//          res.status(400).send({err})
+//      }
+
+    // try {
+    //   const profileData = await Profile.find({userId: req._id})
+    //   res.status(200).send(profileData)
+    // }
+
+    // catch(err) {
+    //   console.log(err)
+    //      res.status(400).send({err})
+    //  }
+
+
+    
+ 
+  })
 
 
 
