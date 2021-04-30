@@ -61,17 +61,19 @@ router.use(fileUpload())
   router.get("/userProfile/:userId", async (req, res) => {
 
 
-    try {
-      const id = req.params.userId
-      const profileData = await Profile.find({_id: req.id})
-      res.status(200).send(profileData)
-    }
+    
+      // const id = req.params.userId
+
+      // const profileData = await Profile.find({_id: req.id})
+      // debugger
+      // res.status(200).send(profileData)
+    
 
     
-   catch(err) {
-      console.log(err)
-         res.status(400).send({err})
-     }
+  //  catch(err) {
+  //     console.log(err)
+  //        res.status(400).send({err})
+  //    }
 
 
     
@@ -94,7 +96,7 @@ router.use(fileUpload())
 //     try {
 //       let id = req.params.userId
 //       let userDetails = userModel.find({_id: id})
-//       await res.status(200).send(profileData)
+//        res.status(200).send(profileData)
 //  }
 
 //    catch(err) {
@@ -102,15 +104,15 @@ router.use(fileUpload())
 //          res.status(400).send({err})
 //      }
 
-    // try {
-    //   const profileData = await Profile.find({userId: req._id})
-    //   res.status(200).send(profileData)
-    // }
+    try {
+      const profileData = await Profile.findOne({userId: req._id})
+      res.status(200).send(profileData)
+    }
 
-    // catch(err) {
-    //   console.log(err)
-    //      res.status(400).send({err})
-    //  }
+    catch(err) {
+      console.log(err)
+         res.status(400).send({err})
+     }
 
 
     
